@@ -141,8 +141,10 @@ public class Host {
         clearFile("scores.txt");
         for (Player p : players) {
             int score = scores.get(p.username);
-            String summary = p.username + ": " + score + " points";
-            broadcast(summary);
+            broadcast(p.username + ": " + score + " points");
+            String fullStats = p.username + ": " + score + " points, " + correctGuesses.get(p.username) + " correct, " + wrongGuessesCount.get(p.username) + " wrong guesses";
+            System.out.println("[HOST] " + fullStats);
+            saveScore(p.username + " (" + p.getIP() + ")", score);
             System.out.println("[HOST] " + summary);
             saveScore(p.username + " (" + p.getIP() + ")", score);
         }
