@@ -145,8 +145,6 @@ public class Host {
             String fullStats = p.username + ": " + score + " points, " + correctGuesses.get(p.username) + " correct, " + wrongGuessesCount.get(p.username) + " wrong guesses";
             System.out.println("[HOST] " + fullStats);
             saveScore(p.username + " (" + p.getIP() + ")", score);
-            System.out.println("[HOST] " + summary);
-            saveScore(p.username + " (" + p.getIP() + ")", score);
         }
 
         askForContinuation();
