@@ -1,74 +1,99 @@
-# Jocul Spânzurătoarea în Rețea
+# 🕹️ Network Hangman Game
 
-Acest proiect este o implementare a jocului clasic **Spânzurătoarea (Hangman)**, care permite desfășurarea unei sesiuni de joc între mai mulți jucători conectați prin rețea. Un jucător acționează ca **gazdă (Host)**, iar ceilalți se conectează în calitate de **clienți** pentru a participa la joc.
+[![Java](https://img.shields.io/badge/language-Java-red.svg)](https://www.java.com/)
+[![Platform](https://img.shields.io/badge/platform-console-blue.svg)]()
+[![Status](https://img.shields.io/badge/status-working-green.svg)]()
 
-## Funcționalități
+> A multiplayer network implementation of the classic Hangman game using Java.
 
-- Joc multiplayer în rețea, cu alegerea cuvintelor dintr-o listă predefinită (`words.txt`).
-- Afișarea progresului grafic al spânzurătorii.
-- Scoruri salvate pentru fiecare jucător în fișierul `scores.txt`.
-- Jucătorii sunt înregistrați cu IP-ul în `players.txt`.
-- Suport pentru reluarea jocului cu aceiași jucători.
+---
 
-## Fișiere Importante
+## 🔍 Overview
 
-- `Host.java` – codul serverului (gazdă joc).
-- `Client.java` – aplicația client cu IP implicit `127.0.0.1`.
-- `ClientManual.java` – aplicația client unde IP-ul serverului este introdus manual.
-- `words.txt` – lista de cuvinte ce pot fi alese aleator pentru joc.
-- `players.txt` – fișier generat automat cu numele și IP-urile jucătorilor.
-- `scores.txt` – fișier generat automat cu scorurile jucătorilor după fiecare rundă.
+This project allows players to connect to a server and play a game of **Hangman**, featuring a visual representation of the hangman, individual scoring, and automatic player turn rotation.
 
-## Cerințe
+---
 
-- JDK 8+ instalat
-- Consolă sau IDE compatibilă cu Java
+## 🧩 Features
 
-## Cum se rulează
+- ✅ Multiplayer over network (client-server)
+- 📜 Random word selection from `words.txt`
+- 🧠 Scoring system based on correct letter guesses
+- 🗃️ Automatic saving of scores (`scores.txt`) and player info (`players.txt`)
+- 🔁 Prompt to continue the game after each round
 
-### 1. Pornirea serverului
+---
+
+## 🗂️ File Structure
+
+| File              | Description                                                           |
+|-------------------|------------------------------------------------------------------------|
+| `Host.java`       | Game server. Waits for players and controls game logic.               |
+| `Client.java`     | Client connecting to 127.0.0.1 (localhost)                            |
+| `ClientManual.java` | Client with manual IP input                                          |
+| `words.txt`       | List of possible words for the game                                   |
+| `players.txt`     | Auto-generated file with player names and IPs                         |
+| `scores.txt`      | Auto-generated file with player scores                                |
+
+---
+
+## ⚙️ Requirements
+
+- Java 8 or higher
+- Console or IDE supporting Java
+- Local or LAN network connection
+
+---
+
+## ▶️ How to Run
+
+### 1. Compile the source files
 
 ```bash
-javac Host.java
+javac Host.java Client.java ClientManual.java
+```
+
+### 2. Start the server
+
+```bash
 java Host
 ```
 
-Se va cere numărul de jucători. Apoi, aplicația va aștepta conexiuni.
+You will be prompted to enter the number of players.
 
-### 2. Conectarea jucătorilor
+### 3. Connect clients
 
-#### Opțiunea 1 – folosind `Client.java` (IP implicit 127.0.0.1)
+- Use `Client.java` to connect to localhost
+- Use `ClientManual.java` to connect to a different IP
 
-```bash
-javac Client.java
-java Client
-```
+---
 
-#### Opțiunea 2 – folosind `ClientManual.java` (pentru IP diferit)
-
-```bash
-javac ClientManual.java
-java ClientManual
-```
-
-Introdu IP-ul serverului atunci când este cerut.
-
-### 3. Desfășurarea jocului
-
-- Fiecare jucător ghicește litere pe rând.
-- Se acordă puncte pentru literele corect ghicite.
-- Jocul continuă până când cuvântul este complet sau spânzurătoarea este complet desenată.
-- La final, se afișează scorurile și se oferă opțiunea de a continua jocul.
-
-## Exemplu de scoruri (`scores.txt`)
+## 💾 Sample Scores (`scores.txt`)
 
 ```
 Alex (127.0.0.1): 2
 Ionut (172.20.10.4): 1
 ```
 
-## Echipa proiectului
+---
 
-- Achitei Alexandru-Ionut
-- Andronache Ionut]
+## 📋 TODO
 
+- [ ] Add GUI
+- [ ] Add difficulty levels (easy, medium, hard)
+- [ ] Support session persistence
+- [ ] Improve client-server communication with threads
+
+---
+
+## 👥 Project Team
+
+- Achitei Alexandru-Ionut  
+- Andronache Ionut
+
+---
+
+## 📚 Useful Resources
+
+- [Java Documentation](https://docs.oracle.com/en/java/)
+- [Java Sockets Guide](https://www.baeldung.com/a-guide-to-java-sockets)
